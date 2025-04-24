@@ -1,35 +1,35 @@
 <#import "customer/home.ftl" as p>
 <@p.pages>
-    <h1>${category}</h1>
-    <div class="row row-cols-2 row-cols-md-3 g-4">
-        <#if products??>
-            <#list products as product>
-                <form method="post" action="/addToCart">
-                    <div class="col">
-                        <div class="card">
-                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">
-                                    <a href="/products/${product.id}">${product.name}</a>
-                                </h5>
-                                <p class="card-text text-center">${product.categories.name}</p>
-                                <p class="card-text text-center">${product.description}</p>
-                                <p class="card-text text-center"><b> ${product.price?c} </b>грн.</p>
-                            </div>
 
-                            <div class="d-flex justify-content-center align-items-center">
-                                <input type="hidden" name="id" value="${product.id}">
-                                <input type="number" name="quantity" value="0" min="0" max="1000" step="1">
-                            </div>
+    <link rel="stylesheet" href="/css/category.css">
 
-                            <div class="d-flex justify-content-center align-items-center mt-2">
-                                <button class="btn btn-success mt-b"> Add To Cart</button>
+    <div class="category-container">
+        <h2 class="section-title">${category}</h2>
+
+        <div class="product-grid">
+            <#if products??>
+                <#list products as product>
+                    <div class="product-card">
+                        <a href="/products/${product.id}" class="product-link">
+                            <img src="${product.image}" alt="${product.name}" class="product-img"/>
+
+                            <div class="product-details">
+                                <h3>${product.name}</h3>
+                                <p class="product-cat">${product.categories.name}</p>
+                                <p class="product-desc">${product.description}</p>
+                                <p class="product-price">${product.price?c} грн</p>
                             </div>
-                            <div class="mt-2"></div>
-                        </div>
+                        </a>
+
+                        <form method="post" action="/addToCart" class="product-form">
+                            <input type="hidden" name="id" value="${product.id}"/>
+                            <input type="number" name="quantity" value="1" min="1" max="1000"/>
+                            <button type="submit" class="btn add">Додати в кошик</button>
+                        </form>
                     </div>
-                </form>
-            </#list>
-        </#if>
+                </#list>
+            </#if>
+        </div>
     </div>
+
 </@p.pages>

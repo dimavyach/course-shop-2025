@@ -1,31 +1,30 @@
 <#import "customer/home.ftl" as p>
 <@p.pages>
+<head>
+        <link rel="stylesheet" href="/css/home.css">
+</head>
+    <div class="home-container">
+        <section class="hero-section">
+            <h1>Ласкаво просимо до нашого магазину!</h1>
+            <p>Обирайте категорію, щоб знайти потрібні товари</p>
+        </section>
 
-<h2>Work area</h2>
-<h2> Category </h2>
+        <h2 class="section-title">Категорії товарів</h2>
 
-<div class="row row-cols-2 row-cols-md-3 g-4">
-
-    <#if categories??>
-
-        <#list categories as category>
-
-            <div class="col">
-                <div class="card">
-                    <a href="/category/${category.id}">
-                        <img src="${category.images}" class="card-img-top" alt="${category.name}">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">${category.name}</h5>
-                        <p class="card-text">${category.description}</p>
+        <div class="category-grid">
+            <#if categories??>
+                <#list categories as category>
+                    <div class="category-card">
+                        <a href="/category/${category.id}">
+                            <img src="${category.images}" alt="${category.name}">
+                            <div class="category-info">
+                                <h3>${category.name}</h3>
+                                <p>${category.description}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            </div>
-
-        </#list>
-    </#if>
-
-</div>
-
-
+                </#list>
+            </#if>
+        </div>
+    </div>
 </@p.pages>

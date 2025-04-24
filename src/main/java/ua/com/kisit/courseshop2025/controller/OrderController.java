@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.com.kisit.courseshop2025.bl.Cart;
 import ua.com.kisit.courseshop2025.bl.ItemCart;
+import ua.com.kisit.courseshop2025.dto.OrderView;
 import ua.com.kisit.courseshop2025.entity.Clients;
 import ua.com.kisit.courseshop2025.entity.Delivery;
 import ua.com.kisit.courseshop2025.entity.Orders;
@@ -21,7 +22,7 @@ import ua.com.kisit.courseshop2025.service.ClientsService;
 import ua.com.kisit.courseshop2025.service.OrderService;
 import ua.com.kisit.courseshop2025.service.ProductHasOrderService;
 
-import java.util.Date;
+import java.util.*;
 
 @Controller
 public class OrderController {
@@ -124,8 +125,27 @@ public class OrderController {
 
         return "thank";
     }
+    @GetMapping("/profile")
+    public String getProfile(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Object user = session.getAttribute("user");
 
+        if (user == null) {
+            return "redirect:/login";
+        }
 
+        Clients client = clientsService.findById((Long) user);
+        List<Orders> orders = orderService.findOrdersByClient(client);
 
+        List<OrderView> orderViews = new ArrayList<>();
+        for (Orders order : orders) {
+            double total = orderService.calculateTotalForOrder(order);
+            orderViews.add(new OrderView(order, total));
+        }
 
+        model.addAttribute("client", client);
+        model.addAttribute("orderViews", orderViews);
+
+        return "profile";
+    }
 }

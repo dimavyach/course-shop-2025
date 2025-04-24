@@ -38,7 +38,4 @@ public class Orders {
 
     @OneToMany(mappedBy = "order")
     private List<ProductsHasOrder> productsHasOrders;
-
-
-
 }

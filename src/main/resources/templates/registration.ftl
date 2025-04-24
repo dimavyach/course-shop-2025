@@ -1,64 +1,62 @@
 <#import "customer/home.ftl" as p>
 <#import "/spring.ftl" as s>
+
 <@p.pages>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/css/register.css">
-    </head>
 
-    <div class="wrapper">
-        <h2 class="text-center">Форма реєстрації</h2>
-        <hr>
+<link rel="stylesheet" href="/css/register.css">
 
-        <form method="post" action="/registration" class="form">
-            <@s.bind "users"/>
+<div class="register-wrapper">
+    <form method="post" action="/registration" class="register-form">
+        <h2 class="register-title">Реєстрація нового користувача</h2>
 
-            <div class="input-box">
-                <label for="username">Логін</label>
-                <@s.formInput "users.username" 'placeholder="Введіть ім\'я користувача" id="username" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <@s.bind "users"/>
+        <div class="form-group">
+            <label for="username">Логін</label>
+            <@s.formInput "users.username" 'placeholder="Введіть логін" id="username"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="password">Пароль</label>
-                <@s.formInput "users.password" 'placeholder="Введіть пароль" id="password" type="password" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <@s.formInput "users.password" 'placeholder="Введіть пароль" id="password" type="password"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <@s.bind "clients"/>
+        <@s.bind "clients"/>
+        <div class="form-group">
+            <label for="firstName">Ім’я</label>
+            <@s.formInput "clients.firstName" 'placeholder="Ваше ім\'я" id="firstName"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="firstName">Ім'</label>
-                <@s.formInput "clients.firstName" 'placeholder="Ваше ім\'я" id="firstName" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <div class="form-group">
+            <label for="lastName">Прізвище</label>
+            <@s.formInput "clients.lastName" 'placeholder="Ваше прізвище" id="lastName"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="lastName">Прізвище</label>
-                <@s.formInput "clients.lastName" 'placeholder="Ваше прізвище" id="lastName" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <div class="form-group">
+            <label for="phone">Телефон</label>
+            <@s.formInput "clients.phone" 'placeholder="Ваш телефон" id="phone"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="phone">Номер телефону</label>
-                <@s.formInput "clients.phone" 'placeholder="Ваш телефон" id="phone" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <div class="form-group">
+            <label for="email">Електронна пошта</label>
+            <@s.formInput "clients.email" 'placeholder="Ваш email" id="email"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="email">Пошта</label>
-                <@s.formInput "clients.email" 'placeholder="Ваш email" id="email" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <div class="form-group">
+            <label for="age">Вік</label>
+            <@s.formInput "clients.age" 'placeholder="Ваш вік" id="age" type="number"'/>
+            <@s.showErrors "<div class='error'>${error}</div>"/>
+        </div>
 
-            <div class="input-box">
-                <label for="age">Вік</label>
-                <@s.formInput "clients.age" 'placeholder="Ваш вік" id="age" type="number" class="form-control"'/>
-                <@s.showErrors "<br>"/>
-            </div>
+        <button type="submit" class="btn-register">Зареєструватися</button>
+    </form>
+</div>
 
-            <button type="submit" class="btn btn-success w-100">Зареєструватися</button>
-        </form>
-    </div>
 </@p.pages>
 
 

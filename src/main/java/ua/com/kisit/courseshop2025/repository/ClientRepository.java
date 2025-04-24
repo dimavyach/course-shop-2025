@@ -5,5 +5,5 @@ import ua.com.kisit.courseshop2025.entity.Clients;
 
 public interface ClientRepository extends JpaRepository<Clients, Long>
 {
-
+    Clients findByUser_Id(Long userId);
 }

@@ -1,64 +1,51 @@
 <#import "customer/home.ftl" as p>
 <@p.pages>
+<head>
+        <link rel="stylesheet" href="/css/main.css">
+</head>
+    <div class="cart-container">
+        <h2>Кошик</h2>
 
-    <h2>Cart</h2>
+        <#if cart?has_content>
+            <div class="cart-grid">
+                <#list cart as item>
+                    <div class="cart-item">
+                        <img class="product-image" src="${item.product.image}" alt="${item.product.name}">
+                        <div class="product-info">
+                            <h3>${item.product.name}</h3>
+                            <p>Ціна: ${item.product.price} ₴</p>
+                            <p>Разом: ${item.product.price * item.quantity} ₴</p>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>name</th>
-            <th>image</th>
-            <th>quantity</th>
-            <th>price</th>
-            <th>value</th>
-            <th>update</th>
-            <th>delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#if cart??>
+                            <form class="cart-form" method="post" action="/updateItemInCart">
+                                <input type="number" name="quantity" value="${item.quantity}" min="1" max="100" />
+                                <input type="hidden" name="id" value="${item.product.id}" />
+                                <button class="btn update" type="submit">Оновити</button>
+                            </form>
 
-            <#list cart as item>
-                <tr>
-                    <td>${item.product.name}</td>
-                    <td>
-                        <img src="${item.product.image}" height="25px" alt="${item.product.name}">
-                    </td>
-                    <form method="post" action="/updateItemInCart">
-                        <td><input type="number" name="quantity" value="${item.quantity}" min="0" max="100" step="1"/> </td>
-                        <td>${item.product.price}</td>
-                        <td>${item.product.price * item.quantity}</td>
-                        <td>
-                            <input type="hidden" name="id" value="${item.product.id}">
-                            <button>update</button>
-                        </td>
-                    </form>
+                            <form method="post" action="/deleteItemFromCart">
+                                <input type="hidden" name="id" value="${item.product.id}" />
+                                <button class="btn delete" type="submit">Видалити</button>
+                            </form>
+                        </div>
+                    </div>
+                </#list>
+            </div>
 
-                    <td>
-                        <form method="post" action="/deleteItemFromCart">
-                            <input type="hidden" name="id" value="${item.product.id}">
-                            <button>delete</button>
-                        </form>
-                    </td>
-                </tr>
-            </#list>
+            <div class="cart-summary">
+                <p>Загальна кількість товарів: <strong>${el}</strong></p>
+                <p><strong>Загальна сума: ${totalValue} ₴</strong></p>
+                <form method="get" action="/order">
+                    <button class="btn checkout" type="submit">Оформити замовлення</button>
+                </form>
+            </div>
+        <#else>
+            <div class="cart-summary">
+                <p>Кошик порожній</p>
+                <div style="margin-top: 1rem;">
+                    <a href="/" class="btn checkout">Повернутися на головну</a>
+                </div>
+            </div>
         </#if>
-        </tbody>
-    </table>
-
-
-    <h3> Вартість покупки:  ${totalValue} </h3>
-    <h3> Загальна кількість елементів кошику: ${el}</h3>
-
-    <form action="/deleteAllItems" method="post">
-        <button> delete All</button>
-    </form>
-
-    <hr>
-
-    <form method="get" action="/order">
-
-        <button> Перейти на форму підтвердження замовлення </button>
-    </form>
-
+    </div>
 </@p.pages>
+

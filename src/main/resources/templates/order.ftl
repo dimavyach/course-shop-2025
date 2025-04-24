@@ -1,69 +1,58 @@
 <#import "customer/home.ftl" as p>
-
 <@p.pages>
 
-<h3> Оформлення замовлення </h3>
+<link rel="stylesheet" href="/css/order.css">
 
-    <h4> Інформація про користувача </h4>
-    <hr>
-    <ul>
-        <li>${client.firstName}</li>
-        <li>${client.lastName}</li>
-        <li>${client.email}</li>
-        <li>${client.phone}</li>
-    </ul>
+<div class="order-container">
+    <h2>Оформлення замовлення</h2>
 
-    <hr>
-    <h4> Дані про обрану продукцію </h4>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>name</th>
-            <th>image</th>
-            <th>quantity</th>
-            <th>price</th>
-            <th>value</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#if cart??>
+    <#if cart?? && cart?size gt 0>
+        <div class="cart-list">
             <#list cart as item>
-                <tr>
-                    <td>${item.product.name}</td>
-                    <td>
-                        <img src="${item.product.image}" height="25px" alt="${item.product.name}">
-                    </td>
-                        <td>${item.quantity}</td>
-                        <td>${item.product.price}</td>
-                        <td>${item.product.price * item.quantity}</td>
-                </tr>
+                <div class="cart-item">
+                    <img src="${item.product.image}" alt="${item.product.name}" class="cart-image">
+                    <div class="cart-details">
+                        <h4>${item.product.name}</h4>
+                        <p>Ціна: ${item.product.price?string["#,##0.00"]} грн</p>
+                        <p>Кількість: ${item.quantity}</p>
+                        <p>Разом: ${(item.product.price * item.quantity)?string["#,##0.00"]} грн</p>
+                    </div>
+                </div>
             </#list>
-        </#if>
-        </tbody>
-    </table>
+        </div>
 
-    <h4> Загальна вартість купівлі: ${totalValue} </h4>
-    <h4> Загальна кількість нуменклатурних позицій у кошику: ${el}</h4>
+        <div class="cart-summary">
+            <p><strong>Загальна кількість товарів:</strong> ${el}</p>
+            <p><strong>Загальна сума:</strong> ${totalValue?string["#,##0.00"]} грн</p>
+        </div>
 
-    <form method="post" action="/buy">
-    <hr>Спосіб доставки </hr>
-        <select name="delivery">
-            <option value="1">Нова пошта</option>
-            <option value="2">Укрпошта</option>
-            <option value="3">Самовивіз</option>
-            <option value="4">Кур'єрська доставка</option>
-        </select>
+        <form method="post" action="/buy" class="buy-form">
+            <div class="form-section">
+                <label for="delivery">Виберіть спосіб доставки:</label>
+                <select name="delivery" id="delivery" required>
+                    <option value="1">Самовивіз</option>
+                    <option value="2">Нова Пошта</option>
+                    <option value="3">Кур'єр</option>
+                </select>
+            </div>
 
-    <hr>
-    <h4> Вибір способу оплати </h4>
-        <input type="radio" name="payment" value="1">Оплата під час отримання товару<br>
-        <input type="radio" name="payment" value="2">Google Pay<br>
-        <input type="radio" name="payment" value="3">Картою онлайн<br>
+            <div class="form-section">
+                <label for="payment">Виберіть спосіб оплати:</label>
+                <select name="payment" id="payment" required>
+                    <option value="1">Готівка</option>
+                    <option value="2">Карта</option>
+                    <option value="3">Безготівковий розрахунок</option>
+                </select>
+            </div>
 
-    <hr>
+            <div class="form-actions">
+                <button type="submit" class="btn-confirm">Підтвердити замовлення</button>
+            </div>
+        </form>
 
-        <button> Підтвердити замовлення </button>
-    </form>
-
+    <#else>
+        <p class="no-items">Кошик порожній</p>
+    </#if>
+</div>
 
 </@p.pages>

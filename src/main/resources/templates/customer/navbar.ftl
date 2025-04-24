@@ -9,27 +9,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Category</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/delivery">Delivery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/payment">Payment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/registration">Registration</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="/">Головна</a></li>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Головна</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/category/1">Категорії</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/delivery">Доставка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/payment">Оплата</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about-us">Про нас</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">Особистий кабінет</a></li>
+                    </ul>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">

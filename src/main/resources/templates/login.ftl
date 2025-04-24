@@ -28,35 +28,34 @@
 <#--</@p.pages>-->
 
 
+<#import "customer/home.ftl" as p>
 <@p.pages>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/css/login.css">
-    </head>
-    <div class="wrapper">
-        <form action="/login" method="post" class="form">
-            <h2 class="text-center text-primary">Форма входу</h2>
-            <hr>
 
-            <div class="input-box">
-                <input type="text" name="username" placeholder="Логін користувача" required class="form-control">
-                <i class="bx bxs-user"></i>
-            </div>
+<link rel="stylesheet" href="/css/login.css">
 
-            <div class="input-box">
-                <input type="password" name="password" placeholder="Пароль" required class="form-control">
-                <i class="bx bxs-lock-alt"></i>
-            </div>
+<div class="login-wrapper">
+    <form action="/login" method="post" class="login-form">
+        <h2 class="login-title">Вхід до акаунту</h2>
 
-            <div class="remember-forgot">
-                <label><input type="checkbox" name="remember-me"> Запам'ятати мене</label>
-                <a href="#">Забули пароль?</a>
-            </div>
+        <div class="login-input-group">
+            <label for="username">Логін</label>
+            <input type="text" name="username" id="username" placeholder="Введіть логін" required>
+        </div>
 
-            <button type="submit" class="btn btn-success w-100 mt-3">Увійти</button>
+        <div class="login-input-group">
+            <label for="password">Пароль</label>
+            <input type="password" name="password" id="password" placeholder="Введіть пароль" required>
+        </div>
 
-            <div class="text-center mt-3">
-                <p>Немає акаунта? <a href="/registration">Зареєструватись</a></p>
-            </div>
-        </form>
-    </div>
+        <div class="login-remember">
+            <label><input type="checkbox" name="remember-me"> Запам’ятати мене</label>
+            <a href="#" class="forgot-link">Забули пароль?</a>
+        </div>
+
+        <button type="submit" class="btn-login">Увійти</button>
+
+        <p class="register-link">Ще немає акаунта? <a href="/registration">Зареєструватися</a></p>
+    </form>
+</div>
+
 </@p.pages>

@@ -13,14 +13,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.com.kisit.courseshop2025.bl.Cart;
 import ua.com.kisit.courseshop2025.entity.Clients;
 import ua.com.kisit.courseshop2025.entity.Users;
+import ua.com.kisit.courseshop2025.entity.Orders;
 import ua.com.kisit.courseshop2025.service.ClientsService;
+import ua.com.kisit.courseshop2025.service.OrderService;
 import ua.com.kisit.courseshop2025.service.UserService;
+import java.util.List;
+
 
 @Controller
-public class UserController {
+public class UserController
+{
 
     private final UserService userService;
     private final ClientsService clientsService;
+
 
     public UserController(UserService userService, ClientsService clientsService) {
         this.userService = userService;
@@ -93,5 +99,9 @@ public class UserController {
         if(cart != null){ return "redirect:/order"; }
 
         return "redirect:/";
+
     }
+
+
+
 }

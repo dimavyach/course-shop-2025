@@ -10,16 +10,24 @@ public class ClientsService {
     private final ClientRepository clientRepository;
 
 
-    public ClientsService(ClientRepository clientRepository) {
+    public ClientsService(ClientRepository clientRepository)
+    {
         this.clientRepository = clientRepository;
     }
 
-    public void saveNewClients(Clients client) {
+    public void saveNewClients(Clients client)
+    {
         clientRepository.save(client);
     }
 
-    public Clients findById(Long id) {
+    public Clients findById(Long id)
+    {
         return clientRepository.findById(id).get();
+    }
+
+    //профіль
+    public Clients findByUserId(Long userId){
+        return clientRepository.findByUser_Id(userId);
     }
 
 }

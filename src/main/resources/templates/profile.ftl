@@ -6,6 +6,10 @@
 <div class="profile-container">
     <div class="profile-box">
         <h2>Мій профіль</h2>
+        <div class="logout-button-container">
+            <a href="/logout" class="btn btn-logout">Вийти з особистого кабінету</a>
+        </div>
+
         <ul class="profile-info">
             <li><strong>Ім’я:</strong> ${client.firstName!'-'}</li>
             <li><strong>Прізвище:</strong> ${client.lastName!'-'}</li>

@@ -1,13 +1,13 @@
 /* Головна сторінка */
 .home-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    max-width: 1600px;
+    margin: 0;
+    padding: 0.5rem 0.5rem;
 }
 
 .hero-section {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .hero-section h1 {

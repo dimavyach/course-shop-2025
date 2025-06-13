@@ -1,0 +1,86 @@
+.manager-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.manager-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.manager-form, .manager-table {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.manager-form h4, .manager-table h4 {
+    margin-bottom: 1rem;
+    color: #345;
+}
+
+.manager-form .form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead.table-light th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.form-control-sm {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+}
+
+.text-end {
+    text-align: right !important;
+}
+
+@media (max-width: 768px) {
+    .manager-form .row {
+        flex-direction: column;
+    }
+    .manager-form .col-md-4 {
+        max-width: 100%;
+    }
+}
+/* Простий список категорій */
+.category-list h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.category-list .card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-list .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.category-list .card-img-top {
+  object-fit: cover;
+  height: 150px;
+}

@@ -6,7 +6,9 @@
 <div class="product-container">
     <div class="product-card">
         <div class="product-image-block">
-            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <img src="${product.image?replace('/static','')}"
+                 alt="${product.name}"
+                 class="product-img"/>
         </div>
 
         <div class="product-info-block">
@@ -46,11 +48,11 @@
 
         <div class="review-form">
             <h4>Залишити відгук</h4>
-            <form action="/reviews/add" method="post">
-                <input type="hidden" name="productId" value="${productId}">
+            <form action="/products/${product.id}/reviews" method="post">
+                <!-- Поля вводу для відгуку -->
                 <input type="text" name="author" placeholder="Ваше ім'я" required>
                 <textarea name="content" placeholder="Ваш відгук..." required></textarea>
-                <input type="number" name="rating" min="1" max="5" required placeholder="Оцінка (1-5)">
+                <input type="number" name="rating" min="1" max="5" required>
                 <button type="submit" class="btn submit-review">Надіслати</button>
             </form>
         </div>

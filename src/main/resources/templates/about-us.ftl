@@ -3,6 +3,6 @@
 <@p.pages>
 
     <h2>About Us </h2>
-    <p>asd  sa d sa d sa d</p>
+    <p>Інтернет магазин</p>
 
 </@p.pages>

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ua.com.kisit</groupId>
-    <artifactId>course-shop-2025</artifactId>
+    <artifactId>online-shop-2025</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>course-shop-2025</name>
-    <description>course-shop-2025</description>
+    <name>online-shop-2025</name>
+    <description>online-shop-2025</description>
     <packaging>jar</packaging>
 
     <url/>
@@ -47,6 +47,11 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
@@ -77,6 +82,12 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

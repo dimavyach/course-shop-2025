@@ -16,7 +16,7 @@
                 <#list categories as category>
                     <div class="category-card">
                         <a href="/category/${category.id}">
-                            <img src="${category.images}" alt="${category.name}">
+                            <img src="${category.images?replace('/static','')}" alt="${category.name}">
                             <div class="category-info">
                                 <h3>${category.name}</h3>
                                 <p>${category.description}</p>

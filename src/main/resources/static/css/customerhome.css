@@ -1,0 +1,43 @@
+
+.container-max-widths: (
+  md: 500px
+);
+
+
+
+/* Адаптивність
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .left-menu-container {
+        margin-bottom: 1rem;
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+
+    .main-content-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .left-menu-container {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .main-content-container {
+        width: 100%;
+    }
+}
+*\

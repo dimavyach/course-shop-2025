@@ -2,6 +2,8 @@ package ua.com.kisit.onlineshop2025.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -129,26 +131,25 @@ public class OrderController {
         return "thank";
     }
     @GetMapping("/profile")
-    public String getProfile(Model model, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Object user = session.getAttribute("user");
-
-        if (user == null) {
+    public String getProfile(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        // якщо анонімний чи не аутентифікований – перенаправляємо на логін
+        if (auth == null
+                || !auth.isAuthenticated()
+                || auth instanceof AnonymousAuthenticationToken) {
             return "redirect:/login";
         }
 
-        Clients client = clientsService.findById((Long) user);
-        List<Orders> orders = orderService.findOrdersByClient(client);
+        Users currentUser = (Users) auth.getPrincipal();
+        Clients client = clientsService.findById(currentUser.getId());
 
-        List<OrderView> orderViews = new ArrayList<>();
-        for (Orders order : orders) {
-            double total = orderService.calculateTotalForOrder(order);
-            orderViews.add(new OrderView(order, total));
-        }
+        List<Orders> orders = orderService.findOrdersByClient(client);
+        List<OrderView> orderViews = orders.stream()
+                .map(o -> new OrderView(o, orderService.calculateTotalForOrder(o)))
+                .toList();
 
         model.addAttribute("client", client);
         model.addAttribute("orderViews", orderViews);
-
         return "profile";
     }
 }

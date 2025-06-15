@@ -49,5 +49,4 @@ public class UserService implements UserDetailsService {
     public List<Users> findAll() {
         return userRepository.findAll();
     }
-
 }

@@ -1,2 +1,2 @@
 ﻿# shopeonline
- Интернет магазин Java + Spring Boot, FreeMarker
+Інтернет магазин Java + Spring Boot, FreeMarker

@@ -19,15 +19,14 @@ public class ManagerCategoryController {
         this.categoryService = categoryService;
     }
 
-    // Показати всі категорії у менеджерській секції
-
+    //показати всі категорії у менеджерській секції
     @GetMapping
     public String getPageCategories(Model model) {
         model.addAttribute("categories", categoryService.getAllCategories());
         return "templ_manager/categories";  // ваш шаблон для списку категорій
     }
 
-    // Збереження нової категорії
+    //збереження нової категорії
     @PostMapping("/saveNewCategory")
     public String saveNewCategory(
             @RequestParam("name") String name,
@@ -43,30 +42,30 @@ public class ManagerCategoryController {
         return "redirect:/manager/categories";
     }
 
-    // Оновлення існуючої категорії
+    //оновлення існуючої категорії
     @PostMapping("/updateCategory")
     public String updateCategory(
-            @RequestParam("id") Long id,                   // приймаємо лише ID
+            @RequestParam("id") Long id,        //приймаємо лише ID
             @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("image") String images)
     {
-        // дістати об’єкт за ID
+        //дістати об’єкт за ID
         Categories category = categoryService.findCategoryById(id);
-        // оновити його поля
+        //оновити його поля
         category.setName(name);
         category.setDescription(description);
         category.setImages(images);
-        // зберегти
+        //зберегти
         categoryService.saveCategory(category);
 
         return "redirect:/manager/categories";
     }
 
-    // Видалення категорії
+    //видалення категорії
     @PostMapping("/deleteCategory")
     public String deleteCategory(
-            @RequestParam("id") Long id)                // теж приймаємо лише ID
+            @RequestParam("id") Long id)   //теж приймаємо лише ID
     {
         categoryService.deleteCategoryById(id);
         return "redirect:/manager/categories";

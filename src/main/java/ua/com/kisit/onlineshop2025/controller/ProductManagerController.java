@@ -24,7 +24,6 @@ public class ProductManagerController {
         this.categoryService = categoryService;
     }
 
-
     @GetMapping
     public String productsPage(Model model) {
 

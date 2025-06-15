@@ -22,28 +22,24 @@ public class AdminController {
         this.orderService = orderService;
         this.reviewService = reviewService;
     }
-
-    // Главная админ-панели, перенаправляет на список пользователей
+    //головна
     @GetMapping
     public String adminIndex() {
         return "redirect:/admin/users";
     }
-
-    // Список пользователей
+    //список юзерів
     @GetMapping("/users")
     public String users(Model model) {
         model.addAttribute("users", userService.findAll());
         return "templ_admin/users";
     }
-
-    // Список заказов
+    //список замовлень
     @GetMapping("/orders")
     public String orders(Model model) {
         model.addAttribute("orders", orderService.findAll());
         return "templ_admin/orders";
     }
-
-    // Список отзывов
+    //список відгуків
     @GetMapping("/reviews")
     public String reviews(Model model) {
         model.addAttribute("reviews", reviewService.findAll());

@@ -14,8 +14,6 @@ public class CategoryController {
     private final CategoryService categoryService;
     private final ProductService productService;
 
-
-
     public CategoryController(CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;
         this.productService = productService;
@@ -29,7 +27,4 @@ public class CategoryController {
 
         return "category";
     }
-
-
-
 }

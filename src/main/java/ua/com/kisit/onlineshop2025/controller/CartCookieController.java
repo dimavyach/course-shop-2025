@@ -78,23 +78,25 @@ public class CartCookieController {
         return null;
     }
 
-    private void saveCartToCookies(Cart cart, HttpServletResponse response) {
-        try {
+    private void saveCartToCookies(Cart cart, HttpServletResponse response)
+    {
+        try
+        {
 
-            // перетворює об'єкт cart у JSON-ряд
+            //перетворює об'єкт cart у JSON-ряд
             String cartJson = objectMapper.writeValueAsString(cart);
 
-            String encodedCartJson = Base64 // дозволяє уникнути проблем із недопустимими символами
+            String encodedCartJson = Base64 //дозволяє уникнути проблем із недопустимими символами
                     .getEncoder()
-                    .encodeToString(cartJson.getBytes()); // кодувати
+                    .encodeToString(cartJson.getBytes()); //кодувати
 
-            Cookie cookie = new Cookie(COOKIE_NAME, encodedCartJson); // і'мя  та закодоване значення
+            Cookie cookie = new Cookie(COOKIE_NAME, encodedCartJson); //і'мя  та закодоване значення
 
-            cookie.setPath("/"); //  cookie доступне для всього сайту.
-            cookie.setHttpOnly(true); // робить cookie недоступним для JavaScript (захист від XSS-атак)
-            cookie.setMaxAge(7 * 24 * 60 * 60); // час життя cookie - 7 днів
+            cookie.setPath("/"); //cookie доступне для всього сайту.
+            cookie.setHttpOnly(true); //робить cookie недоступним для JavaScript (захист від XSS-атак)
+            cookie.setMaxAge(7 * 24 * 60 * 60); //час життя cookie - 7 днів
 
-            response.addCookie(cookie); // додавання cookie у відповідь
+            response.addCookie(cookie); //додавання cookie у відповідь
         } catch (Exception e) {
             e.printStackTrace();
         }

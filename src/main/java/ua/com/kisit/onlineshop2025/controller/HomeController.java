@@ -16,16 +16,6 @@ public class HomeController
         this.categoryService = categoryService;
     }
 
-
-//    @GetMapping("/")
-//    public String TestController(Model model) {
-//
-//        model.addAttribute("categories", categoryService.findAllCategories());
-//        model.addAttribute("message", "Hello World!");
-//
-//        return "hello";
-//    }
-
     @GetMapping({"/","/home"})
     public String HomePage(Model model) {
         model.addAttribute("categories", categoryService.findAllCategories());

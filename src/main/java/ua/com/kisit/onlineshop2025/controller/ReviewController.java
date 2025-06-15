@@ -13,10 +13,8 @@ import java.util.List;
 
 @Controller
 public class ReviewController {
-    //конструктор
     private final ReviewService reviewService;
     private final ProductService productService;
-
     public ReviewController(ReviewService reviewService, ProductService productService) {
         this.reviewService = reviewService;
         this.productService = productService;
@@ -47,13 +45,11 @@ public class ReviewController {
             model.addAttribute("error", "Product ID is missing.");
             return "product-details";
         }
-
         Products product = productService.getProductById(productId);
         if (product == null) {
             model.addAttribute("error", "Product not found.");
             return "product-details";
         }
-
         //отримання списку відгуків за товаром, форматування дати, передача даних
         List<Reviews> reviews = reviewService.getReviewsByProductId(productId);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -64,7 +60,6 @@ public class ReviewController {
                 review.setFormattedDate("Unknown date");
             }
         }
-
         model.addAttribute("product", product);
         model.addAttribute("reviews", reviews);
         model.addAttribute("productId", productId);

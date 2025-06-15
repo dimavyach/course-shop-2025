@@ -19,40 +19,36 @@ import java.util.Collections;
 
 @Controller
 public class UserController {
-
     private final UserService userService;
     private final ClientsService clientsService;
-
     public UserController(UserService userService, ClientsService clientsService) {
         this.userService = userService;
         this.clientsService = clientsService;
     }
 
-
     @GetMapping("/login")
-    public String getPageLogin() {
+    public String getPageLogin()
+    {
         return "login";
     }
 
     @GetMapping("/registration")
     public String getPageRegistration(Model model,
-                                      @RequestParam(name = "err", defaultValue = " ") String error
-    ) {
+                                      @RequestParam(name = "err", defaultValue = " ") String error)
+    {
         model.addAttribute("users", new Users());
         model.addAttribute("clients", new Clients());
         model.addAttribute("error", error);
 
         return "registration";
     }
-
-
     @PostMapping("/registration")
     public String registration(@Valid Users users,
                                BindingResult bindingResult1,
                                @Valid Clients clients,
                                BindingResult bindingResult2,
-                               RedirectAttributes redirectAttributes
-    ) {
+                               RedirectAttributes redirectAttributes)
+    {
 
         if (bindingResult1.hasErrors()) {
             redirectAttributes.addAttribute("err","");
@@ -79,29 +75,9 @@ public class UserController {
 
         return "redirect:/login";
     }
-
-
-    //    @PostMapping("/login")
-    //    public String authUserInShop(@RequestParam(name = "username") String username,
-    //                                 @RequestParam(name = "password") String password,
-    //                                 HttpServletRequest request
-    //                                 ){
-    //        if(!userService.getUserByUsernameAndPassword(username, password)){
-    //            return "redirect:/registration";
-//        }
-//
-//        HttpSession session = request.getSession();
-//        session.setAttribute("user", userService.findByUsername(username).getId());
-//
-//        Cart cart = (Cart) request.getSession().getAttribute("cart");
-//        if(cart != null){ return "redirect:/order"; }
-//
-//        return "redirect:/";
-//    }
-
-
     @GetMapping("/403")
-    public String get403() {
+    public String get403()
+    {
         return "e403";
     }
 }

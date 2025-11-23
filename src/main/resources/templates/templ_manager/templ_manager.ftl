@@ -60,10 +60,10 @@
     <div class="row">
         <div class="col-md-3 pt-3">
             <div class="list-group">
-                <a href="/manager/categories" class="list-group-item list-group-item-action">Адміністрування категорій</a>
-                <a href="/manager/products" class="list-group-item list-group-item-action">Адміністрування продукції</a>
-                <a href="/admin/orders" class="list-group-item list-group-item-action">Адміністрування замовлень </a>
-                <a href="admin/reviews" class="list-group-item list-group-item-action">Адміністрування відгуків </a>
+                <a href="/manager/categories" class="list-group-item list-group-item-action">Менеджер категорій</a>
+                <a href="/manager/products" class="list-group-item list-group-item-action">Менеджер продукції</a>
+                <a href="/admin/orders" class="list-group-item list-group-item-action">Адмін замовлень </a>
+                <a href="/admin/reviews" class="list-group-item list-group-item-action">Адмін відгуків </a>
             </div>
         </div>
         <div class="col-md-9 pt-3">

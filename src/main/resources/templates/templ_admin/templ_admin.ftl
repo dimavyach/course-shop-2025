@@ -45,6 +45,7 @@
                 <a href="/admin/users"       class="list-group-item list-group-item-action">Список користувачів</a>
                 <a href="/admin/orders"      class="list-group-item list-group-item-action">Список замовлень</a>
                 <a href="/admin/reviews"     class="list-group-item list-group-item-action">Список відгуків</a>
+                <a href="/manager/products"     class="list-group-item list-group-item-action">Менеджер</a>
             </div>
         </div>
         <div class="col-md-9">

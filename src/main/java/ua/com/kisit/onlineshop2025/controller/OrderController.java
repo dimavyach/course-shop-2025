@@ -143,6 +143,13 @@ public class OrderController {
         Users currentUser = (Users) auth.getPrincipal();
         Clients client = clientsService.findById(currentUser.getId());
 
+        boolean isAdmin = currentUser.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("role_admin"));
+
+        boolean isManager = currentUser.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("role_manager"));
+
+
         List<Orders> orders = orderService.findOrdersByClient(client);
         List<OrderView> orderViews = orders.stream()
                 .map(o -> new OrderView(o, orderService.calculateTotalForOrder(o)))
@@ -150,6 +157,9 @@ public class OrderController {
 
         model.addAttribute("client", client);
         model.addAttribute("orderViews", orderViews);
+
+        model.addAttribute("isAdmin", isAdmin);
+        model.addAttribute("isManager", isManager);
         return "profile";
     }
 }

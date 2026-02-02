@@ -9,6 +9,20 @@
         <div class="logout-button-container">
             <a href="/logout" class="btn btn-logout">Вийти з особистого кабінету</a>
         </div>
+        <div class="admin-links">
+
+            <#if isAdmin>
+                <a href="/admin" class="btn btn-admin">Адмін-панель</a>
+            </#if>
+
+            <#if isManager>
+                <a href="/manager/products" class="btn btn-manager">
+                    Панель менеджера
+                </a>
+            </#if>
+
+        </div>
+
 
         <ul class="profile-info">
             <li><strong>Ім’я:</strong> ${client.firstName!'-'}</li>

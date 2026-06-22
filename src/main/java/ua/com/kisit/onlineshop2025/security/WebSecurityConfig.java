@@ -58,6 +58,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/", "/login", "/registration",
+                                "/error",
                                 "/products/**", "/about-us", "/delivery",
                                 "/profile", "/payment", "/product-details",
                                 "/category/**", "/cart",
@@ -65,9 +66,13 @@ public class WebSecurityConfig {
                                 "/deleteAllItems", "/deleteItemFromCart"
                         ).permitAll()
                         .requestMatchers("/manager/**")
-                            .hasAuthority("role_manager")
+                            .hasAnyAuthority("role_manager", "role_admin")
+                        .requestMatchers("/admin/orders", "/admin/orders/**", "/admin/reviews", "/admin/reviews/**")
+                            .hasAnyAuthority("role_manager", "role_admin")
+                        .requestMatchers("/admin/users/**")
+                            .hasAuthority("role_admin")
                         .requestMatchers("/admin/**")
-                        .   hasAuthority("role_admin")
+                            .hasAuthority("role_admin")
                         .anyRequest()
                         .authenticated()
                 )

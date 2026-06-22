@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,8 +43,7 @@ public class OrderController {
     public String getOrder(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         //Object user = session.getAttribute("user");
-        SecurityContext context = SecurityContextHolder.getContext();
-        Users user = (Users) context.getAuthentication().getPrincipal();
+        Users user = getCurrentUser();
 
         if (user == null) {
             return "redirect:/login";
@@ -76,8 +74,7 @@ public class OrderController {
         HttpSession session = request.getSession();
         //перевірка наявності користувача
         //Object user = session.getAttribute("user");
-        SecurityContext context = SecurityContextHolder.getContext();
-        Users user = (Users) context.getAuthentication().getPrincipal();
+        Users user = getCurrentUser();
 
         if (user == null) {
             return "redirect:/login";
@@ -161,5 +158,18 @@ public class OrderController {
         model.addAttribute("isAdmin", isAdmin);
         model.addAttribute("isManager", isManager);
         return "profile";
+    }
+
+    private Users getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth == null
+                || !auth.isAuthenticated()
+                || auth instanceof AnonymousAuthenticationToken
+                || !(auth.getPrincipal() instanceof Users)) {
+            return null;
+        }
+
+        return (Users) auth.getPrincipal();
     }
 }

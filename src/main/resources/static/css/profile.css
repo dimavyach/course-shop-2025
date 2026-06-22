@@ -1,81 +1,99 @@
 .profile-container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 1rem;
-    font-family: 'Segoe UI', sans-serif;
 }
 
-.profile-box, .orders-box {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    margin-bottom: 2rem;
+.profile-box,
+.orders-box {
+    margin-bottom: 24px;
+    padding: 24px;
 }
 
-.profile-box h2, .orders-box h2 {
-    color: #2c3e50;
-    margin-bottom: 1.2rem;
+.profile-box h2,
+.orders-box h2 {
+    margin-bottom: 18px;
+    color: var(--shop-text);
+    font-weight: 700;
 }
 
 .profile-info {
-    list-style: none;
+    margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .profile-info li {
-    padding: 0.5rem 0;
-    font-size: 1.05rem;
-    color: #444;
+    padding: 0.55rem 0;
+    color: #475569;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--shop-border);
+}
+
+.profile-info li:last-child {
+    border-bottom: 0;
 }
 
 .orders-table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 1rem;
+    border-collapse: collapse;
 }
 
 .orders-table th,
 .orders-table td {
-    border: 1px solid #ddd;
     padding: 0.75rem;
-    text-align: center;
+    border: 1px solid var(--shop-border);
     font-size: 0.95rem;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .orders-table th {
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: var(--shop-surface-muted);
+    color: var(--shop-text);
 }
 
 .orders-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #fafbfc;
 }
 
 .no-orders {
-    font-style: italic;
-    color: #777;
     margin-top: 1rem;
+    color: var(--shop-muted);
+    font-style: italic;
 }
-/* logout */
 
 .logout-button-container {
-    text-align: right;
     margin-bottom: 1rem;
+    text-align: right;
 }
 
-.btn-logout {
-    display: inline-block;
+.btn-logout,
+.btn-admin,
+.btn-manager {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 8px 8px;
     padding: 0.5rem 1rem;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
+    border: 0;
+    border-radius: 8px;
+    font-weight: 700;
     text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
 }
 
-.btn-logout:hover {
-    background-color: #c0392b;
+.admin-links {
+    margin-bottom: 14px;
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+    .orders-box {
+        overflow-x: auto;
+    }
+
+    .logout-button-container,
+    .admin-links {
+        text-align: left;
+    }
 }

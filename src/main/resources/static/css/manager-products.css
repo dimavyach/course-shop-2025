@@ -1,57 +1,66 @@
 .manager-container {
-max-width: 1200px;
-margin: 2rem auto;
-font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    max-width: 1200px;
 }
 
 .manager-container h2 {
-text-align: center;
-margin-bottom: 1.5rem;
-color: #2c3e50;
+    margin-bottom: 22px;
+    color: var(--shop-text);
+    font-weight: 700;
+    text-align: center;
 }
 
 .card {
-background-color: #fff;
-border-radius: 8px;
-box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid var(--shop-border);
+    border-radius: var(--shop-radius);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
 }
 
 .card h4 {
-margin: 0;
-color: #2c3e50;
+    margin: 0;
+    color: var(--shop-text);
+    font-weight: 700;
 }
 
 .manager-form .form-label {
-font-size: 0.9rem;
-color: #555;
+    color: var(--shop-text);
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .manager-table .form-control-sm,
 .manager-table .form-select-sm {
-font-size: 0.85rem;
-padding: 0.2rem 0.4rem;
+    min-width: 120px;
+    padding: 0.25rem 0.45rem;
+    font-size: 0.85rem;
 }
 
 .thumb-img {
-max-width: 80px;
-max-height: 50px;
-object-fit: cover;
-border-radius: 4px;
+    width: 80px;
+    height: 58px;
+    padding: 4px;
+    border: 1px solid var(--shop-border);
+    border-radius: 6px;
 }
 
 .table-responsive {
-overflow-x: auto;
+    overflow-x: auto;
 }
 
 .table {
-margin-bottom: 0;
+    margin-bottom: 0;
+}
+
+.table th {
+    color: var(--shop-text);
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-.manager-form .row {
-flex-direction: column;
-}
-.manager-form .col-md-4 {
-max-width: 100%;
-}
+    .manager-form .row {
+        flex-direction: column;
+    }
+
+    .manager-form .col-md-4 {
+        max-width: 100%;
+    }
 }

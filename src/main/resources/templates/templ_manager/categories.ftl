@@ -2,6 +2,8 @@
 <@m.pages>
 <link rel="stylesheet" href="/css/manager-category.css">
 
+<div class="manager-container">
+
 <div class="category-list card mb-4 p-4">
     <h4>Всі категорії</h4>
     <div class="table-responsive">
@@ -39,7 +41,7 @@
 <!-- Форма додавання нової категорії -->
     <div class="manager-form card mb-5 p-4">
         <h4>Додати нову категорію</h4>
-        <form method="post" action="/saveNewCategory">
+        <form method="post" action="/manager/categories/saveNewCategory">
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="name" class="form-label">Назва</label>
@@ -92,10 +94,10 @@
                             <input type="text" name="image" value="${category.images}" class="form-control form-control-sm" required>
                         </td>
                         <td>
-                            <button type="submit" formaction="/updateCategory" class="btn btn-success btn-sm">Update</button>
+                            <button type="submit" formaction="/manager/categories/updateCategory" class="btn btn-success btn-sm">Update</button>
                         </td>
                         <td>
-                            <button type="submit" formaction="/deleteCategory" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" formaction="/manager/categories/deleteCategory" class="btn btn-danger btn-sm">Delete</button>
                         </td>
                     </form>
                 </tr>

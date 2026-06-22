@@ -3,6 +3,8 @@ package ua.com.kisit.onlineshop2025.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import java.net.URI;
+import java.net.URISyntaxException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,11 +47,13 @@ public class CartController {
 
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
+
         if (cart == null) cart = new Cart();
+
         cart.addNewItemToCart(product, quantity);
         session.setAttribute("cart", cart);
 
-        return "redirect:/cart";
+        return "redirect:" + getSafeReturnUrl(request);
     }
 
 
@@ -95,6 +99,34 @@ public class CartController {
         session.setAttribute("cart", cart);
 
         return "redirect:/cart";
+    }
+
+    private String getSafeReturnUrl(HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+
+        if (referer == null || referer.isBlank()) {
+            return "/";
+        }
+
+        try {
+            URI uri = new URI(referer);
+            String requestHost = request.getServerName();
+
+            if (uri.getHost() == null || !uri.getHost().equalsIgnoreCase(requestHost)) {
+                return "/";
+            }
+
+            String path = uri.getRawPath();
+            String query = uri.getRawQuery();
+
+            if (path == null || path.isBlank()) {
+                return "/";
+            }
+
+            return query == null ? path : path + "?" + query;
+        } catch (URISyntaxException exception) {
+            return "/";
+        }
     }
 
 }

@@ -31,7 +31,7 @@
                         <img src="${product.image}" alt="${product.name}" class="thumb-img">
                     </td>
                     <td>
-                        <#if product.category??>${product.category.name}<#else>—</#if>
+                        <#if product.categories??>${product.categories.name}<#else>—</#if>
                     </td>
                 </tr>
                 </#list>
@@ -48,7 +48,7 @@
     <!-- 2) Форма додавання нового товару -->
     <div class="card mb-4 p-4">
         <h4>Додати новий товар</h4>
-        <form action="/saveNewProducts" method="post" class="row g-3 mt-2">
+        <form action="/manager/products/saveNewProducts" method="post" class="row g-3 mt-2">
             <div class="col-md-4">
                 <label for="name" class="form-label">Назва</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Введіть назву" required>
@@ -121,17 +121,17 @@
                         <select name="categories" class="form-select form-select-sm">
                             <#list categories as cat>
                             <option value="${cat.id}"
-                            <#if product.category?? && (cat.id == product.category.id)>selected</#if>>
+                            <#if product.categories?? && (cat.id == product.categories.id)>selected</#if>>
                         ${cat.name}
                         </option>
                     </#list>
                     </select>
                     </td>
                     <td>
-                        <button type="submit" formaction="/updateProduct" class="btn btn-success btn-sm">Update</button>
+                        <button type="submit" formaction="/manager/products/updateProduct" class="btn btn-success btn-sm">Update</button>
                     </td>
                     <td>
-                        <button type="submit" formaction="/deleteProduct" class="btn btn-danger btn-sm">Delete</button>
+                        <button type="submit" formaction="/manager/products/deleteProduct" class="btn btn-danger btn-sm">Delete</button>
                     </td>
                 </form>
             </tr>

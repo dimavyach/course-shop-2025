@@ -27,6 +27,11 @@ public class ManagerCategoryController {
     }
 
     //збереження нової категорії
+    @GetMapping({"/saveNewCategory", "/updateCategory", "/deleteCategory"})
+    public String redirectCategoryActions() {
+        return "redirect:/manager/categories";
+    }
+
     @PostMapping("/saveNewCategory")
     public String saveNewCategory(
             @RequestParam("name") String name,

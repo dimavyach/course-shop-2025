@@ -7,6 +7,7 @@ import ua.com.kisit.onlineshop2025.repository.OrderRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService
@@ -34,5 +35,9 @@ public class OrderService
     }
     public List<Orders> findAll() {
         return orderRepository.findAll();
+    }
+
+    public Optional<Orders> findById(Long id) {
+        return orderRepository.findById(id);
     }
 }

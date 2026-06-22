@@ -1,106 +1,88 @@
 .login-wrapper {
     display: flex;
-    justify-content: center;
+    min-height: 72vh;
     align-items: center;
-    padding: 2rem;
-    min-height: 80vh;
-    background-color: #f4f6f8;
+    justify-content: center;
+    padding: 24px;
 }
 
 .login-form {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
+    width: min(100%, 420px);
+    padding: 28px;
 }
 
 .login-title {
+    margin-bottom: 22px;
+    color: var(--shop-text);
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
 }
 
 .login-input-group {
-    margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 16px;
 }
 
 .login-input-group label {
-    margin-bottom: 0.3rem;
-    color: #555;
-    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: var(--shop-text);
+    font-weight: 600;
 }
 
 .login-input-group input {
-    padding: 0.6rem;
+    min-height: 44px;
+    padding: 0.65rem;
+    border: 1px solid var(--shop-border);
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .login-input-group input:focus {
-    border-color: #3498db;
+    border-color: var(--shop-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
     outline: none;
 }
 
 .login-remember {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.2rem;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: var(--shop-muted);
     font-size: 0.95rem;
 }
 
-.forgot-link {
-    color: #3498db;
+.forgot-link,
+.register-link a {
+    color: var(--shop-primary);
     text-decoration: none;
 }
 
-.forgot-link:hover {
+.forgot-link:hover,
+.register-link a:hover {
     text-decoration: underline;
 }
 
 .btn-login {
     width: 100%;
-    background-color: #2ecc71;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
+    min-height: 46px;
+    border: 0;
     padding: 0.8rem;
-    font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn-login:hover {
-    background-color: #27ae60;
+    font-size: 1rem;
 }
 
 .register-link {
-    text-align: center;
-    margin-top: 1.2rem;
+    margin-top: 18px;
+    color: var(--shop-muted);
     font-size: 0.95rem;
-}
-
-.register-link a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
+    text-align: center;
 }
 
 @media (max-width: 480px) {
     .login-form {
-        padding: 1.2rem;
+        padding: 20px;
     }
 }
-
-
-

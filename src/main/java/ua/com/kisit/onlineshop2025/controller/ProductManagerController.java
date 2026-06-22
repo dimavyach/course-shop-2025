@@ -33,6 +33,11 @@ public class ProductManagerController {
         return "templ_manager/products";
     }
 
+    @GetMapping({"/saveNewProducts", "/updateProduct", "/deleteProduct"})
+    public String redirectProductActions() {
+        return "redirect:/manager/products";
+    }
+
     @PostMapping("/saveNewProducts")
     public String saveNewProducts(
             @RequestParam(name = "name") String name,
@@ -75,7 +80,7 @@ public class ProductManagerController {
 
 
     @PostMapping("/deleteProduct")
-    public String deleteProduct(@RequestParam(name = "id2") Products product)
+    public String deleteProduct(@RequestParam(name = "id1") Products product)
     {
         productService.delete(product);
         return "redirect:/manager/products";

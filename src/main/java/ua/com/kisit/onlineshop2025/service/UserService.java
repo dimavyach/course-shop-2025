@@ -9,6 +9,7 @@ import ua.com.kisit.onlineshop2025.entity.Users;
 import ua.com.kisit.onlineshop2025.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -44,6 +45,18 @@ public class UserService implements UserDetailsService {
 
     public Users findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public Optional<Users> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public Users save(Users user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
     public List<Users> findAll() {

@@ -1,8 +1,6 @@
 <#import "customer/home.ftl" as p>
 <@p.pages>
-<head>
-        <link rel="stylesheet" href="/css/main.css">
-</head>
+    <link rel="stylesheet" href="/css/main.css">
     <div class="cart-container">
         <h2>Кошик</h2>
 
@@ -48,4 +46,3 @@
         </#if>
     </div>
 </@p.pages>
-

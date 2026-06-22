@@ -1,30 +1,32 @@
 .manager-container {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 .manager-container h2 {
+    margin-bottom: 22px;
+    color: var(--shop-text);
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 2rem;
-    color: #2c3e50;
 }
 
-.manager-form, .manager-table {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+.manager-form,
+.manager-table {
+    border: 1px solid var(--shop-border);
+    border-radius: var(--shop-radius);
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
 }
 
-.manager-form h4, .manager-table h4 {
+.manager-form h4,
+.manager-table h4,
+.category-list h4 {
     margin-bottom: 1rem;
-    color: #345;
+    color: var(--shop-text);
+    font-weight: 700;
 }
 
 .manager-form .form-label {
-    font-weight: 500;
-    color: #555;
+    color: var(--shop-text);
+    font-weight: 600;
 }
 
 .table-responsive {
@@ -36,16 +38,18 @@
 }
 
 .table thead.table-light th {
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid var(--shop-border);
 }
 
-.table td, .table th {
+.table td,
+.table th {
     vertical-align: middle;
 }
 
 .form-control-sm {
-    font-size: 0.9rem;
+    min-width: 120px;
     padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
 }
 
 .btn-sm {
@@ -53,34 +57,32 @@
     font-size: 0.85rem;
 }
 
-.text-end {
-    text-align: right !important;
+.category-list .card {
+    overflow: hidden;
+    border: 1px solid var(--shop-border);
+    border-radius: var(--shop-radius);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-list .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shop-shadow);
+}
+
+.category-list .card-img-top {
+    width: 100%;
+    height: 160px;
+    padding: 10px;
+    object-fit: contain;
+    background: var(--shop-surface-muted);
 }
 
 @media (max-width: 768px) {
     .manager-form .row {
         flex-direction: column;
     }
+
     .manager-form .col-md-4 {
         max-width: 100%;
     }
-}
-/* Простий список категорій */
-.category-list h4 {
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.category-list .card {
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.category-list .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-
-.category-list .card-img-top {
-  object-fit: cover;
-  height: 150px;
 }

@@ -15,7 +15,7 @@
                                  alt="${product.name}"
                                  class="product-img"
                             />
-                            <div class="/product-details">
+                            <div class="product-details">
                                 <h3>${product.name}</h3>
                                 <p class="product-cat">${product.categories.name}</p>
                                 <p class="product-desc">${product.description}</p>

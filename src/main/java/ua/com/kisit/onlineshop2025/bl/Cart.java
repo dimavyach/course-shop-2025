@@ -81,7 +81,15 @@ public class Cart {
 
         return totalValue;
     }
+
+    //загальна кількість одиниць товару
     public synchronized int getSumElInCart() {
-        return cart.size();
+        int quantity = 0;
+
+        for (ItemCart itemCart : cart) {
+            quantity += itemCart.getQuantity();
+        }
+
+        return quantity;
     }
 }
